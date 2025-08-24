@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aswin Lakshmanan - Software Data Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #0080ff);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15));
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #ffffff;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            background: linear-gradient(45deg, #00d4ff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .hero-highlight {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00d4ff;
+            margin-bottom: 35px;
+            animation: fadeInUp 1s ease 0.55s both;
+        }
+
+        .hero-highlight p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button {
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(45deg, #00d4ff, #0080ff);
+            color: #0a0a0a;
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #00d4ff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Value Proposition Section */
+        .value-prop {
+            background: rgba(0, 212, 255, 0.05);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 35px;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .value-description {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #00d4ff, #0080ff);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 18px;
+            border-left: 4px solid #00d4ff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(10px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 35px;
+            width: 14px;
+            height: 14px;
+            background: #00d4ff;
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .experience-header {
+            margin-bottom: 20px;
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .experience-company {
+            font-size: 1.3rem;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .experience-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .experience-duration {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .experience-location {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .impact-metrics {
+            background: rgba(0, 212, 255, 0.08);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .impact-title {
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .impact-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .impact-item {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .achievement {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .achievement::before {
+            content: '🔹';
+            margin-right: 12px;
+            margin-top: 2px;
+            color: #00d4ff;
+        }
+
+        .highlight {
+            background: rgba(0, 212, 255, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .skills-intro h3 {
+            color: #00d4ff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .skills-intro p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 35px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .skill-category h3 {
+            color: #00d4ff;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            padding: 10px 18px;
+            background: rgba(0, 212, 255, 0.1);
+            color: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 128, 255, 0.08));
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .projects-intro h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .project-header {
+            padding: 35px 35px 25px;
+        }
+
+        .project-impact {
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+            padding: 12px 20px;
+            border-radius: 25px;
+            color: #00ff88;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .project-duration {
+            color: rgba(0, 212, 255, 0.9);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tech-tag {
+            padding: 6px 14px;
+            background: rgba(0, 128, 255, 0.12);
+            color: #66b3ff;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 128, 255, 0.2);
+        }
+
+        .project-links {
+            padding: 0 35px 35px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            padding: 12px 24px;
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .education-degree {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 12px;
+        }
+
+        .education-school {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .education-duration {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .education-details {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        .education-details strong {
+            color: #00d4ff;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-header {
+            margin-bottom: 35px;
+        }
+
+        .contact-header h3 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-tagline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 18px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .submit-btn {
+            padding: 16px 32px;
+            background: linear-gradient(45deg, #00d4ff, #0080ff);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .hero {
+                padding: 0 20px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .projects-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 20px;
+            }
+
+            .experience-item::before {
+                left: -22px;
+            }
+
+            .value-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Aswin Lakshmanan</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#value">Why Me</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Hire Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🎓 MS Information Systems Graduate</div>
+                <h1 class="hero-title">Aswin Lakshmanan</h1>
+                <h2 class="hero-subtitle">Software Data Engineer</h2>
+                <p class="hero-description">
+                    MS Information Systems graduate with 3+ years of experience building data pipelines and
+                    backend systems at companies like Fidelity Investments and Cerner Corporation.
+                </p>
+                <div class="hero-highlight">
+                    <p><strong>Recent Work:</strong> Built ETL pipelines that reduced data processing latency by <span
+                            class="highlight">60%</span>,
+                        developed secure APIs that improved operational efficiency by <span
+                            class="highlight">30%</span>, and worked on
+                        healthcare systems serving thousands of users.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-button cta-primary">📧 Get In Touch</a>
+                    <a href="#" class="cta-button cta-secondary">📄 View Resume</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Years Enterprise Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">Performance Improvement</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$500K+</span>
+                    <span class="stat-label">Value Created</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99%</span>
+                    <span class="stat-label">System Uptime Achieved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="value" class="section value-prop">
+        <div class="section-header">
+            <h2 class="section-title">What I Bring</h2>
+            <p class="section-subtitle">Experience across data engineering, cloud platforms, and software development
+            </p>
+        </div>
+
+        <div class="value-cards">
+            <div class="value-card">
+                <span class="value-icon">⚡</span>
+                <h3 class="value-title">Data Pipeline Optimization</h3>
+                <p class="value-description">
+                    Experience building and optimizing ETL pipelines at Fidelity, achieving significant
+                    performance improvements through careful design and implementation.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">🔒</span>
+                <h3 class="value-title">Security & Quality Focus</h3>
+                <p class="value-description">
+                    Worked on healthcare systems at Cerner, focusing on security best practices,
+                    comprehensive testing, and maintaining high code quality standards.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">☁️</span>
+                <h3 class="value-title">Cloud Infrastructure</h3>
+                <p class="value-description">
+                    Hands-on experience with AWS services, Kubernetes, and Infrastructure as Code using
+                    Terraform for scalable, maintainable cloud solutions.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">🤖</span>
+                <h3 class="value-title">Modern Technology Adoption</h3>
+                <p class="value-description">
+                    Interested in AI/ML applications, with projects involving RAG systems and machine learning
+                    models for practical business applications.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">Building data solutions and backend systems across different industries</p>
+        </div>
+
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Software Data Engineer Co-op - Data Platform Engineer</h3>
+                    <p class="experience-company">🏦 Fidelity Investments</p>
+                </div>
+                <div class="experience-meta">
+                    <span class="experience-duration">Jul 2024 - Dec 2024 (6 months)</span>
+                    <span class="experience-location">Boston, MA</span>
+                </div>
+                <div class="impact-metrics">
+                    <div class="impact-title">Key Contributions:</div>
+                    <div class="impact-list">
+                        <span class="impact-item">ETL Pipeline Development</span>
+                        <span class="impact-item">AWS Implementation</span>
+                        <span class="impact-item">Data Migration</span>
+                        <span class="impact-item">Process Automation</span>
+                    </div>
+                </div>
+                <div class="experience-achievements">
+                    <div class="achievement">Architected enterprise-scale <span class="highlight">ETL pipelines using
+                            Python and SQL</span>, processing millions of financial records with 60% latency reduction
+                    </div>
+                    <div class="achievement">Built automated image extraction system from research documents using <span
+                            class="highlight">AWS (S3, SSM)</span>, enhancing data accessibility for investment research
+                        teams</div>
+                    <div class="achievement">Led critical <span class="highlight">legacy API to Snowflake
+                            migration</span>, modernizing data infrastructure and improving system reliability</div>
+                    <div class="achievement">Developed production-grade web scrapers using <span
+                            class="highlight">Playwright with advanced anti-detection</span> (rotating proxies,
+                        user-agent spoofing, multiprocessing)</div>
+                    <div class="achievement">Implemented comprehensive <span class="highlight">Snowflake data
+                            pipeline</span> with automated ingestion, change tracking, and robust testing procedures
+                    </div>
+                    <div class="achievement">Engineered secure third-party API integrations improving <span
+                            class="highlight">operational efficiency by 30%</span> across trading systems</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Software Engineer 1 | Healthcare Systems</h3>
+                    <p class="experience-company">🏥 Cerner Corporation (Oracle Health)</p>
+                </div>
+                <div class="experience-meta">
+                    <span class="experience-duration">Jan 2023 - Jul 2023 (7 months)</span>
+                    <span class="experience-location">Bengaluru, India • Hybrid</span>
+                </div>
+                <div class="impact-metrics">
+                    <div class="impact-title">🎯 HEALTHCARE IMPACT:</div>
+                    <div class="impact-list">
+                        <span class="impact-item">50% Vulnerability Reduction</span>
+                        <span class="impact-item">Hospital System Optimization</span>
+                        <span class="impact-item">Docker Containerization</span>
+                        <span class="impact-item">Zero Downtime Deployments</span>
+                    </div>
+                </div>
+                <div class="experience-achievements">
+                    <div class="achievement">Developed critical <span class="highlight">pharmacy order workflows and
+                            clinical decision support</span> systems serving thousands of healthcare providers</div>
+                    <div class="achievement">Built robust <span class="highlight">REST APIs for pharmacy product
+                            selection</span> with comprehensive security scanning and vulnerability management</div>
+                    <div class="achievement">Eliminated <span class="highlight">50% of security vulnerabilities</span>
+                        across pharmacy services through systematic code analysis and remediation</div>
+                    <div class="achievement">Containerized healthcare applications using <span
+                            class="highlight">Docker</span>, enabling seamless deployment across dev, staging, and
+                        production environments</div>
+                    <div class="achievement">Implemented <span class="highlight">OAuth2.0/1.0 authentication</span>
+                        ensuring secure access to sensitive patient data and medical systems</div>
+                    <div class="achievement">Collaborated in <span class="highlight">SAFe Agile environment</span>
+                        delivering critical healthcare software impacting patient care</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Software Development Engineer in Test</h3>
+                    <p class="experience-company">📡 Gigamon (Network Visibility)</p>
+                </div>
+                <div class="experience-meta">
+                    <span class="experience-duration">Apr 2021 - Sep 2021 (6 months)</span>
+                    <span class="experience-location">Chennai, India</span>
+                </div>
+                <div class="impact-metrics">
+                    <div class="impact-title">🎯 AUTOMATION ACHIEVEMENTS:</div>
+                    <div class="impact-list">
+                        <span class="impact-item">30+ Tests Automated</span>
+                        <span class="impact-item">Framework Migration</span>
+                        <span class="impact-item">Telecom Expertise</span>
+                        <span class="impact-item">Network Analysis</span>
+                    </div>
+                </div>
+                <div class="experience-achievements">
+                    <div class="achievement">Automated <span class="highlight">30+ critical test cases</span> using
+                        Robot framework for telecom network testing and mobile data processing</div>
+                    <div class="achievement">Successfully migrated legacy test scripts to <span class="highlight">modern
+                            Test Automation Framework (TAF)</span>, improving test reliability</div>
+                    <div class="achievement">Enhanced in-house Python test automation framework, <span
+                            class="highlight">reducing testing time by 40%</span> across development teams</div>
+                    <div class="achievement">Mastered <span class="highlight">Wireshark packet analysis</span> for
+                        telecom network troubleshooting and performance optimization</div>
+                    <div class="achievement">Demonstrated deep expertise in <span class="highlight">3G/4G/LTE network
+                            architectures</span> for mobile service provider solutions</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Software Engineering Trainee - Container Security</h3>
+                    <p class="experience-company">🛡️ AccuKnox (Cybersecurity)</p>
+                </div>
+                <div class="experience-meta">
+                    <span class="experience-duration">Aug 2020 - Mar 2021 (8 months)</span>
+                    <span class="experience-location">Chennai, India</span>
+                </div>
+                <div class="impact-metrics">
+                    <div class="impact-title">🎯 OPEN SOURCE IMPACT:</div>
+                    <div class="impact-list">
+                        <span class="impact-item">Go/gRPC APIs</span>
+                        <span class="impact-item">Kafka Messaging</span>
+                        <span class="impact-item">K8s Automation</span>
+                        <span class="impact-item">Security Contributions</span>
+                    </div>
+                </div>
+                <div class="experience-achievements">
+                    <div class="achievement">Built high-performance <span class="highlight">RESTful APIs using Go, gRPC,
+                            and MySQL</span> for cloud-native security applications</div>
+                    <div class="achievement">Engineered <span class="highlight">Kafka-based distributed messaging
+                            system</span> enhancing real-time data processing capabilities</div>
+                    <div class="achievement">Automated cloud infrastructure deployment using <span
+                            class="highlight">Kubernetes and Helm</span>, streamlining DevOps workflows</div>
+                    <div class="achievement">Deployed comprehensive monitoring with <span class="highlight">Prometheus
+                            and Grafana</span> improving system observability and incident response</div>
+                    <div class="achievement">Developed data lineage tracking using <span class="highlight">ELK
+                            Stack</span> supporting compliance and data governance requirements</div>
+                    <div class="achievement">Made significant <span class="highlight">open-source contributions to
+                            KubeArmor</span> enhancing container runtime security for the community</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">Enterprise-grade skills across the full data engineering stack</p>
+        </div>
+
+        <div class="skills-intro">
+            <h3>🚀 Production-Ready Technology Stack</h3>
+            <p>Battle-tested expertise in building scalable data infrastructure, optimizing performance, and delivering
+                secure solutions at Fortune 500 companies. Ready to contribute from day one.</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>💻 Programming & Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python (Expert)</span>
+                    <span class="skill-tag">Java (Advanced)</span>
+                    <span class="skill-tag">Go (Proficient)</span>
+                    <span class="skill-tag">JavaScript/TypeScript</span>
+                    <span class="skill-tag">SQL (Advanced)</span>
+                    <span class="skill-tag">Shell Scripting</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>☁️ Cloud & Infrastructure</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS (S3, EC2, RDS, SSM)</span>
+                    <span class="skill-tag">Snowflake (Expert)</span>
+                    <span class="skill-tag">Docker & Kubernetes</span>
+                    <span class="skill-tag">Terraform (IaC)</span>
+                    <span class="skill-tag">Helm Charts</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>📊 Data Engineering & Analytics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">ETL Pipeline Design</span>
+                    <span class="skill-tag">Snowpipe Automation</span>
+                    <span class="skill-tag">Apache Kafka</span>
+                    <span class="skill-tag">Power BI & Dashboards</span>
+                    <span class="skill-tag">Data Quality Management</span>
+                    <span class="skill-tag">Real-time Processing</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🤖 AI/ML & Innovation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">RAG Implementation</span>
+                    <span class="skill-tag">LangChain & LLMs</span>
+                    <span class="skill-tag">XGBoost & SHAP</span>
+                    <span class="skill-tag">Computer Vision (BERT, ResNet)</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Vector Databases</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🔧 DevOps & Testing</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">CI/CD Pipelines</span>
+                    <span class="skill-tag">Test Automation (95% Coverage)</span>
+                    <span class="skill-tag">Pytest & JUnit</span>
+                    <span class="skill-tag">Robot Framework</span>
+                    <span class="skill-tag">Jenkins</span>
+                    <span class="skill-tag">Git & Version Control</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>📈 Business & Leadership</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Agile/SAFe Methodology</span>
+                    <span class="skill-tag">Cross-functional Collaboration</span>
+                    <span class="skill-tag">Technical Documentation</span>
+                    <span class="skill-tag">Stakeholder Communication</span>
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Mentoring & Training</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Recent work in distributed systems, cloud infrastructure, and AI applications
+            </p>
+        </div>
+
+        <div class="projects-intro">
+            <h3>Featured Projects</h3>
+            <p>A collection of projects spanning distributed systems, cloud infrastructure, AI applications, and
+                full-stack development.</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-impact">DISTRIBUTED SYSTEMS</div>
+                    <h3 class="project-title">Distributed Policy Bot with AI</h3>
+                    <p class="project-duration">May 2025 - Aug 2025 • Academic Project</p>
+                    <p class="project-description">
+                        Built a fault-tolerant 3-node Akka Cluster with semantic search capabilities.
+                        Implemented RAG pipeline using Qdrant vector database and Microsoft Phi-3 Mini LLM
+                        for intelligent policy search with dynamic load balancing.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java & Akka Cluster</span>
+                        <span class="tech-tag">Vector Database (Qdrant)</span>
+                        <span class="tech-tag">LLM Integration</span>
+                        <span class="tech-tag">Docker & Service Discovery</span>
+                        <span class="tech-tag">Distributed Logging</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">🔗 GitHub Repository</a>
+                    <a href="#" class="project-link">📄 Technical Documentation</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-impact">CLOUD INFRASTRUCTURE</div>
+                    <h3 class="project-title">AWS Cloud Application</h3>
+                    <p class="project-duration">Jan 2025 - Mar 2025 • Cloud Development</p>
+                    <p class="project-description">
+                        Designed and deployed a RESTful microservice on AWS with complete infrastructure automation.
+                        Used Terraform for Infrastructure as Code, implemented CI/CD with GitHub Actions,
+                        and configured security with KMS encryption and IAM roles.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">AWS (EC2, RDS, S3, Route53)</span>
+                        <span class="tech-tag">Terraform (IaC)</span>
+                        <span class="tech-tag">Auto Scaling Groups</span>
+                        <span class="tech-tag">Application Load Balancer</span>
+                        <span class="tech-tag">CloudWatch Monitoring</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/aswinlakshmanan-s/tf-aws-infra" class="project-link">🔗 Infrastructure
+                        Code</a>
+                    <a href="https://github.com/aswinlakshmanan-s/webapp" class="project-link">🔗 Application Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-impact">AI APPLICATION</div>
+                    <h3 class="project-title">Atlee AI - Document Analysis Tool</h3>
+                    <p class="project-duration">Jan 2024 - Apr 2024 • AI/ML Project</p>
+                    <p class="project-description">
+                        Built an AI-powered document analysis platform using Retrieval-Augmented Generation (RAG).
+                        Integrated Claude-3-Opus with Pinecone vector database for semantic search, resulting in
+                        improved user engagement and faster document processing.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Claude-3-Opus Integration</span>
+                        <span class="tech-tag">Pinecone Vector DB</span>
+                        <span class="tech-tag">LangChain Framework</span>
+                        <span class="tech-tag">Multimodal Processing</span>
+                        <span class="tech-tag">Streamlit Interface</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/aswinlakshmanan-s/Atlee---Personalized-PDF-Assistant"
+                        class="project-link">🔗 GitHub Repository</a>
+                    <a href="#" class="project-link">🚀 Live Demonstration</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-impact">FULL-STACK</div>
+                    <h3 class="project-title">ShareQuill - Marketplace Platform</h3>
+                    <p class="project-duration">Oct 2023 - Dec 2023 • Team Project</p>
+                    <p class="project-description">
+                        Developed a peer-to-peer lending marketplace with secure payment processing.
+                        Implemented JWT authentication, Stripe payment integration, and real-time features
+                        using React, Node.js, and MongoDB.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React.js & Node.js</span>
+                        <span class="tech-tag">MongoDB Database</span>
+                        <span class="tech-tag">Stripe Payment API</span>
+                        <span class="tech-tag">JWT Security</span>
+                        <span class="tech-tag">Real-time Features</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/ShareQuill/ShareQuill" class="project-link">🔗 Platform Code</a>
+                    <a href="#" class="project-link">🎥 Product Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-impact">DATA SCIENCE</div>
+                    <h3 class="project-title">Developer Survey Analysis</h3>
+                    <p class="project-duration">Jan 2024 - Apr 2024 • Data Analysis</p>
+                    <p class="project-description">
+                        Analyzed Stack Overflow Developer Survey data using XGBoost and SHAP for explainability.
+                        Explored factors influencing developer job satisfaction and preferences,
+                        providing insights for HR and workforce planning.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">XGBoost & Machine Learning</span>
+                        <span class="tech-tag">SHAP Explainability</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                        <span class="tech-tag">Data Visualization</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/aswinlakshmanan-s/EDA-Stack-Overflow-Developer-Survey"
+                        class="project-link">🔗 Analysis Code</a>
+                    <a href="#" class="project-link">📊 Insights Report</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-impact">RESEARCH</div>
+                    <h3 class="project-title">Multimodal Video Advertisement Classifier</h3>
+                    <p class="project-duration">Research Project • Machine Learning</p>
+                    <p class="project-description">
+                        Developed a multimodal classifier combining BERT for text analysis and ResNet-50 for visual
+                        processing.
+                        Achieved 85.2% accuracy in predicting advertisement effectiveness across multiple metrics,
+                        demonstrating practical applications for digital marketing analysis.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">BERT & Transformers</span>
+                        <span class="tech-tag">ResNet-50 (Computer Vision)</span>
+                        <span class="tech-tag">OpenCV Processing</span>
+                        <span class="tech-tag">PyTorch Framework</span>
+                        <span class="tech-tag">Ensemble Learning</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">🔗 Research Code</a>
+                    <a href="#" class="project-link">📄 Technical Paper</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Academic Excellence</h2>
+            <p class="section-subtitle">Strong foundation in computer science with specialized focus on modern data
+                systems</p>
+        </div>
+
+        <div class="education-grid">
+            <div class="education-card">
+                <h3 class="education-degree">🎓 Master of Science - Information Systems</h3>
+                <p class="education-school">Northeastern University</p>
+                <p class="education-duration">Aug 2023 - Aug 2025 • Boston, MA</p>
+                <div class="education-details">
+                    <p><strong>Specialized Coursework:</strong> Advanced Big Data Applications, Generative AI,
+                        Cloud Computing & Network Structures, Data Science Engineering, Application Development,
+                        Web Design & User Experience</p>
+                    <br>
+                    <p><strong>Key Focus:</strong> Modern data architectures, AI/ML systems, and scalable application
+                        development
+                        for enterprise environments</p>
+                </div>
+            </div>
+
+            <div class="education-card">
+                <h3 class="education-degree">🎓 Bachelor of Technology - Computer Science</h3>
+                <p class="education-school">Amrita Vishwa Vidyapeetham</p>
+                <p class="education-duration">Jul 2016 - May 2020 • India</p>
+                <div class="education-details">
+                    <p><strong>Capstone Project:</strong> "Automated Dynamic Detection of Ransomware using Augmented
+                        Bootstrapping"
+                        - Advanced machine learning research with <strong>85%+ detection accuracy</strong></p>
+                    <br>
+                    <p><strong>Leadership:</strong> Active member of ASCII (Computer Science Association) and
+                        Anokha National Engineering Technology Festival organizing committee</p>
+                    <br>
+                    <p><strong>Core Expertise:</strong> Data Structures, Algorithms, Database Systems, Machine Learning,
+                        Neural Networks, Software Engineering, IoT Applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Feel free to reach out about opportunities or collaborations</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-header">
+                    <h3>Let's Connect</h3>
+                    <p class="contact-tagline">
+                        I'm interested in data engineering and backend development opportunities.
+                        Always open to discussing interesting technical challenges and potential collaborations.
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>Professional Email:</strong><br>
+                        <a href="mailto:sriram.a@northeastern.edu" style="color: #00d4ff;">sriram.a@northeastern.edu</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <strong>LinkedIn Profile:</strong><br>
+                        <a href="https://www.linkedin.com/in/aswinlakshmanan"
+                            style="color: #00d4ff;">linkedin.com/in/aswinlakshmanan</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Location & Availability:</strong><br>
+                        Boston, Massachusetts • <span style="color: #00ff88;">Immediate Start Available</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🎯</div>
+                    <div>
+                        <strong>Interested In:</strong><br>
+                        Data Engineering • Backend Development • Cloud Infrastructure • ML Engineering
+                    </div>
+                </div>
+
+                <div
+                    style="margin-top: 35px; padding: 25px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 128, 255, 0.1)); border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3);">
+                    <h4 style="color: #00d4ff; margin-bottom: 15px; font-size: 1.1rem;">About Working Together:</h4>
+                    <p style="color: rgba(255, 255, 255, 0.95); line-height: 1.6;">
+                        I enjoy working on challenging problems involving data systems, performance optimization,
+                        and building reliable software. Happy to discuss how my experience might fit with your team's
+                        needs.
+                    </p>
+                </div>
+            </div>
+
+            <form class="contact-form">
+                <h3 style="color: #00d4ff; margin-bottom: 25px; font-size: 1.4rem; font-weight: 700;">Get In Touch</h3>
+
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Hiring Manager / Recruiter Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Professional Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company & Role</label>
+                    <input type="text" id="company" name="company" placeholder="Company Name / Your Role">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" required
+                        placeholder="Job Opportunity / Collaboration / Question">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required
+                        placeholder="Tell me about the opportunity or how I can help..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message 🚀</button>
+            </form>
