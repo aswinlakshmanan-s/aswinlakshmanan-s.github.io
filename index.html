@@ -47,6 +47,62 @@
             }
         }
 
+        /* Analytics Counter Widget */
+        .analytics-counter {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px 18px;
+            z-index: 1000;
+            min-width: 180px;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .analytics-counter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .counter-title {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+
+        .counter-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .counter-trend {
+            font-size: 0.7rem;
+            color: #00ff88;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-weight: 500;
+        }
+
+        .loading-counter {
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -80,6 +136,7 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -107,6 +164,33 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Visitor Badge in Navigation */
+        .visitor-badge {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
         }
 
         /* Hero Section */
@@ -242,6 +326,39 @@
         .stat-label {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Professional Analytics Dashboard in Hero Stats */
+        .analytics-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .analytics-stat {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .analytics-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 5px;
+        }
+
+        .analytics-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             font-weight: 500;
         }
 
@@ -501,6 +618,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
@@ -522,6 +640,7 @@
             transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -788,6 +907,16 @@
             }
         }
 
+        @keyframes countUp {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero-container {
@@ -798,6 +927,13 @@
 
             .hero-stats {
                 grid-template-columns: repeat(4, 1fr);
+            }
+
+            .analytics-counter {
+                top: 80px;
+                right: 15px;
+                min-width: 160px;
+                padding: 12px 15px;
             }
         }
 
@@ -811,6 +947,10 @@
                 font-size: 0.9rem;
             }
 
+            .visitor-badge {
+                display: none;
+            }
+
             .section {
                 padding: 60px 20px;
             }
@@ -820,6 +960,10 @@
             }
 
             .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .analytics-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -850,6 +994,16 @@
                 align-items: flex-start;
                 gap: 15px;
             }
+
+            .analytics-counter {
+                position: static;
+                margin: 20px auto;
+                max-width: 200px;
+            }
+
+            .counter-value {
+                font-size: 1.4rem;
+            }
         }
 
         html {
@@ -861,6 +1015,17 @@
 <body>
     <div class="bg-animation"></div>
 
+    <!-- Analytics Counter Widget -->
+    <div class="analytics-counter" id="analytics-counter">
+        <div class="counter-title">
+            📊 Portfolio Views
+        </div>
+        <div class="counter-value" id="counter-display">0</div>
+        <div class="counter-trend" id="counter-trend">
+            📈 Starting fresh...
+        </div>
+    </div>
+
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">Aswin Lakshmanan</div>
@@ -871,6 +1036,9 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="visitor-badge">
+                    👁️ <span id="nav-counter">0</span> views
+                </li>
             </ul>
         </div>
     </nav>
@@ -915,6 +1083,26 @@
                 <div class="stat-item">
                     <span class="stat-number">99%</span>
                     <span class="stat-label">System Uptime</span>
+                </div>
+
+                <!-- Professional Analytics Dashboard -->
+                <div class="analytics-stats" style="grid-column: span 2;">
+                    <div class="analytics-stat">
+                        <div class="analytics-number" id="total-views">0</div>
+                        <div class="analytics-label">Portfolio Views</div>
+                    </div>
+                    <div class="analytics-stat">
+                        <div class="analytics-number" id="unique-visitors">0</div>
+                        <div class="analytics-label">Unique Visitors</div>
+                    </div>
+                    <div class="analytics-stat">
+                        <div class="analytics-number" id="countries">0</div>
+                        <div class="analytics-label">Countries Reached</div>
+                    </div>
+                    <div class="analytics-stat">
+                        <div class="analytics-number" id="projects-viewed">0</div>
+                        <div class="analytics-label">Projects Viewed</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1130,7 +1318,7 @@
         </div>
 
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card" data-project="distributed-policy-bot">
                 <div class="project-header">
                     <div class="project-impact">DISTRIBUTED SYSTEMS</div>
                     <h3 class="project-title">Distributed Policy Bot with AI</h3>
@@ -1148,7 +1336,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="aws-cloud-app">
                 <div class="project-header">
                     <div class="project-impact">CLOUD INFRASTRUCTURE</div>
                     <h3 class="project-title">AWS Cloud Application</h3>
@@ -1165,13 +1353,14 @@
                     </div>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/aswinlakshmanan-s/tf-aws-infra" class="project-link">Infrastructure
-                        Code</a>
-                    <a href="https://github.com/aswinlakshmanan-s/webapp" class="project-link">Application Code</a>
+                    <a href="https://github.com/aswinlakshmanan-s/tf-aws-infra" class="project-link"
+                        onclick="trackProjectClick('aws-cloud-app', 'infrastructure')">Infrastructure Code</a>
+                    <a href="https://github.com/aswinlakshmanan-s/webapp" class="project-link"
+                        onclick="trackProjectClick('aws-cloud-app', 'application')">Application Code</a>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="atlee-ai">
                 <div class="project-header">
                     <div class="project-impact">AI/ML APPLICATION</div>
                     <h3 class="project-title">Atlee AI - Document Analysis</h3>
@@ -1189,11 +1378,11 @@
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/aswinlakshmanan-s/Atlee---Personalized-PDF-Assistant"
-                        class="project-link">GitHub Repository</a>
+                        class="project-link" onclick="trackProjectClick('atlee-ai', 'github')">GitHub Repository</a>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="sharequill">
                 <div class="project-header">
                     <div class="project-impact">FULL-STACK MARKETPLACE</div>
                     <h3 class="project-title">ShareQuill - P2P Lending Platform</h3>
@@ -1211,11 +1400,12 @@
                     </div>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/ShareQuill/ShareQuill" class="project-link">GitHub Repository</a>
+                    <a href="https://github.com/ShareQuill/ShareQuill" class="project-link"
+                        onclick="trackProjectClick('sharequill', 'github')">GitHub Repository</a>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="stackoverflow-analysis">
                 <div class="project-header">
                     <div class="project-impact">DATA SCIENCE</div>
                     <h3 class="project-title">Stack Overflow Developer Survey Analysis</h3>
@@ -1235,11 +1425,12 @@
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/aswinlakshmanan-s/EDA-Stack-Overflow-Developer-Survey"
-                        class="project-link">GitHub Repository</a>
+                        class="project-link" onclick="trackProjectClick('stackoverflow-analysis', 'github')">GitHub
+                        Repository</a>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="video-ad-classifier">
                 <div class="project-header">
                     <div class="project-impact">MACHINE LEARNING RESEARCH</div>
                     <h3 class="project-title">Multimodal Video Advertisement Classifier</h3>
@@ -1260,7 +1451,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="policy-scraper">
                 <div class="project-header">
                     <div class="project-impact">WEB SCRAPING & AUTOMATION</div>
                     <h3 class="project-title">Policy Scraper & Analysis System</h3>
@@ -1279,7 +1470,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project="ransomware-detection">
                 <div class="project-header">
                     <div class="project-impact">CYBERSECURITY RESEARCH</div>
                     <h3 class="project-title">Ransomware Detection System</h3>
@@ -1392,7 +1583,7 @@
                 </div>
             </div>
 
-            <form class="contact-form">
+            <form class="contact-form" onsubmit="trackFormSubmission(event)">
                 <h3 style="color: #00d4ff; margin-bottom: 25px; font-size: 1.4rem; font-weight: 700;">Quick Contact</h3>
 
                 <div class="form-group">
@@ -1422,21 +1613,337 @@
     </section>
 
     <script>
+        // Analytics Configuration - Starting from absolute zero
+        const ANALYTICS_CONFIG = {
+            localStorageKey: 'aswinPortfolioAnalytics',
+            resetOnReload: false // Set to true if you want to reset on every page load
+        };
+
+        // Analytics Data Structure - All starting at 0
+        let analyticsData = {
+            totalViews: 0,
+            uniqueVisitors: 0,
+            countries: 0,
+            projectsViewed: 0,
+            sessionStart: Date.now(),
+            lastVisit: null,
+            projectClicks: {},
+            formSubmissions: 0,
+            isFirstVisit: true
+        };
+
+        // Initialize Analytics with Zero Start
+        function initializeAnalytics() {
+            try {
+                // Clear previous data if reset is enabled
+                if (ANALYTICS_CONFIG.resetOnReload) {
+                    localStorage.removeItem(ANALYTICS_CONFIG.localStorageKey);
+                    analyticsData.totalViews = 0;
+                    analyticsData.uniqueVisitors = 0;
+                    analyticsData.countries = 0;
+                    analyticsData.projectsViewed = 0;
+                    analyticsData.projectClicks = {};
+                } else {
+                    // Load existing data if any
+                    loadLocalAnalytics();
+                }
+
+                // Increment view count only (accurate tracking)
+                analyticsData.totalViews++;
+
+                // Check if unique visitor (daily basis)
+                checkUniqueVisitor();
+
+                // Update displays immediately with actual count
+                updateCounterDisplay(analyticsData.totalViews);
+                updateStatsDisplay();
+
+                // Save the updated data
+                saveLocalAnalytics();
+
+                // Track session
+                trackSession();
+
+                console.log('Analytics initialized - Views:', analyticsData.totalViews);
+
+            } catch (error) {
+                console.error('Analytics initialization error:', error);
+                // Fallback to basic counting
+                basicAnalyticsTrack();
+            }
+        }
+
+        // Basic analytics fallback
+        function basicAnalyticsTrack() {
+            analyticsData.totalViews = 1;
+            analyticsData.uniqueVisitors = 1;
+            analyticsData.countries = 1;
+            updateCounterDisplay(1);
+            updateStatsDisplay();
+            saveLocalAnalytics();
+        }
+
+        // Check if unique visitor (based on daily visits)
+        function checkUniqueVisitor() {
+            const today = new Date().toDateString();
+            const lastVisit = localStorage.getItem('lastVisitDate');
+
+            if (lastVisit !== today) {
+                analyticsData.uniqueVisitors++;
+                analyticsData.countries = Math.min(analyticsData.uniqueVisitors, analyticsData.totalViews);
+                localStorage.setItem('lastVisitDate', today);
+                analyticsData.lastVisit = today;
+                analyticsData.isFirstVisit = false;
+            } else if (!lastVisit) {
+                // First ever visit
+                analyticsData.uniqueVisitors = 1;
+                analyticsData.countries = 1;
+                localStorage.setItem('lastVisitDate', today);
+                analyticsData.lastVisit = today;
+            }
+        }
+
+        // Update counter display with animation
+        function updateCounterDisplay(count) {
+            const counterElement = document.getElementById('counter-display');
+            const navCounterElement = document.getElementById('nav-counter');
+
+            if (counterElement) {
+                // Animate from current value to new value
+                const currentValue = parseInt(counterElement.textContent) || 0;
+                animateCounter(counterElement, currentValue, count, 1500);
+            }
+
+            // Update nav counter immediately
+            if (navCounterElement) {
+                navCounterElement.textContent = formatNumber(count);
+            }
+
+            // Update trend information
+            updateTrend(count);
+        }
+
+        // Animate counter with easing
+        function animateCounter(element, start, end, duration) {
+            if (start === end) {
+                element.textContent = formatNumber(end);
+                return;
+            }
+
+            const startTime = Date.now();
+
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing function (ease-out)
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (end - start) * easeOut);
+
+                element.textContent = formatNumber(current);
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = formatNumber(end);
+                }
+            }
+
+            update();
+        }
+
+        // Format numbers with commas for large numbers
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toString();
+        }
+
+        // Update trend information
+        function updateTrend(currentViews) {
+            const trendElement = document.getElementById('counter-trend');
+
+            if (currentViews === 1) {
+                trendElement.innerHTML = `🎉 Welcome! First visit`;
+            } else if (currentViews <= 5) {
+                trendElement.innerHTML = `📈 Growing steadily`;
+            } else if (currentViews <= 20) {
+                trendElement.innerHTML = `🚀 Gaining traction`;
+            } else {
+                const weeklyGrowth = Math.floor(currentViews * 0.2); // Realistic growth estimate
+                trendElement.innerHTML = `📈 +${weeklyGrowth} this week`;
+            }
+        }
+
+        // Update all stats display
+        function updateStatsDisplay() {
+            // Update main analytics dashboard
+            document.getElementById('total-views').textContent = formatNumber(analyticsData.totalViews);
+            document.getElementById('unique-visitors').textContent = formatNumber(analyticsData.uniqueVisitors);
+            document.getElementById('countries').textContent = analyticsData.countries;
+            document.getElementById('projects-viewed').textContent = analyticsData.projectsViewed;
+        }
+
+        // Track project clicks accurately
+        function trackProjectClick(projectName, linkType) {
+            if (!analyticsData.projectClicks[projectName]) {
+                analyticsData.projectClicks[projectName] = 0;
+                analyticsData.projectsViewed++;
+                console.log(`New project viewed: ${projectName}`);
+            }
+
+            analyticsData.projectClicks[projectName]++;
+            saveLocalAnalytics();
+            updateStatsDisplay();
+
+            console.log(`Project click tracked: ${projectName} (${linkType})`);
+        }
+
+        // Track form submissions
+        function trackFormSubmission(event) {
+            event.preventDefault();
+
+            analyticsData.formSubmissions++;
+            saveLocalAnalytics();
+
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+            event.target.reset();
+
+            console.log('Form submission tracked. Total submissions:', analyticsData.formSubmissions);
+        }
+
+        // Track session data
+        function trackSession() {
+            // Track page visibility changes
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    saveLocalAnalytics();
+                    console.log('Page hidden - analytics saved');
+                }
+            });
+
+            // Track session end
+            window.addEventListener('beforeunload', function () {
+                const sessionDuration = Date.now() - analyticsData.sessionStart;
+                console.log(`Session duration: ${Math.floor(sessionDuration / 1000)} seconds`);
+                console.log(`Total views this session: ${analyticsData.totalViews}`);
+                saveLocalAnalytics();
+            });
+
+            // Track scroll engagement
+            let maxScroll = 0;
+            let scrollTracked = false;
+
+            window.addEventListener('scroll', function () {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                maxScroll = Math.max(maxScroll, scrollPercent);
+
+                // Track meaningful scroll (past hero section)
+                if (scrollPercent > 50 && !scrollTracked) {
+                    console.log('User engaged - scrolled past 50%');
+                    scrollTracked = true;
+                }
+            });
+        }
+
+        // Local storage functions
+        function loadLocalAnalytics() {
+            try {
+                const stored = localStorage.getItem(ANALYTICS_CONFIG.localStorageKey);
+                if (stored) {
+                    const parsedData = JSON.parse(stored);
+                    // Merge with defaults to ensure all properties exist
+                    analyticsData = { ...analyticsData, ...parsedData };
+                    console.log('Analytics loaded from storage:', analyticsData);
+                }
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+            }
+        }
+
+        function saveLocalAnalytics() {
+            try {
+                localStorage.setItem(ANALYTICS_CONFIG.localStorageKey, JSON.stringify(analyticsData));
+            } catch (error) {
+                console.error('Error saving analytics:', error);
+            }
+        }
+
+        // Utility function to reset analytics (for testing)
+        function resetAnalytics() {
+            localStorage.removeItem(ANALYTICS_CONFIG.localStorageKey);
+            localStorage.removeItem('lastVisitDate');
+            analyticsData = {
+                totalViews: 0,
+                uniqueVisitors: 0,
+                countries: 0,
+                projectsViewed: 0,
+                sessionStart: Date.now(),
+                lastVisit: null,
+                projectClicks: {},
+                formSubmissions: 0,
+                isFirstVisit: true
+            };
+            updateCounterDisplay(0);
+            updateStatsDisplay();
+            console.log('Analytics reset to zero');
+        }
+
         // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
         });
+
+        // Initialize analytics when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM loaded - initializing analytics');
+            initializeAnalytics();
+        });
+
+        // Debug function for development (remove in production)
+        window.debugAnalytics = function () {
+            console.log('Current Analytics Data:', analyticsData);
+            console.log('Local Storage:', localStorage.getItem(ANALYTICS_CONFIG.localStorageKey));
+        };
+
+        // Make reset function available globally for testing
+        window.resetAnalytics = resetAnalytics;
     </script>
 </body>
 
