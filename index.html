@@ -299,34 +299,51 @@
             gap: 25px;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 25px 20px;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Status Bar Style */
+        .status-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 20px 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
             backdrop-filter: blur(10px);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #666;
             transition: all 0.3s ease;
         }
 
-        .stat-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(0, 212, 255, 0.3);
-            transform: translateY(-3px);
+        .status-dot.active {
+            background: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            animation: pulse-dot 2s infinite;
         }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #00d4ff;
-            display: block;
-            margin-bottom: 5px;
-        }
+        @keyframes pulse-dot {
 
-        .stat-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            font-weight: 500;
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         /* Professional Analytics Dashboard in Hero Stats */
@@ -444,41 +461,57 @@
         }
 
         .company-logo {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: #ffffff;
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #0a0a0a;
             flex-shrink: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 8px;
         }
 
+        /* Official Company Logos */
         .fidelity-logo {
-            background: linear-gradient(45deg, #00a651, #00d463);
+            background-color: #ffffff;
+            background-image: url('https://bunny-wp-pullzone-escppgmk6u.b-cdn.net/wp-content/uploads/2016/11/K95J2hrW_400x400.png');
+            background-size: 85% 85%;
         }
 
         .oracle-logo {
-            background: linear-gradient(45deg, #ff0000, #ff4444);
+            background-color: #ffffff;
+            background-image: url('https://hitconsultant.net/wp-content/uploads/2022/06/Oracle_Cerner-1500x682.png');
+            background-size: 90% 90%;
         }
 
         .gigamon-logo {
-            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            background-color: #ffffff;
+            background-image: url('https://threatconnect.com/wp-content/uploads/2025/01/gigamon-logo.png');
+            background-size: 80% 80%;
         }
 
         .accuknox-logo {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            background-color: #ffffff;
+            background-image: url('https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_7f50fc5907cee1cdfec3c3d37c40339d/accuknox.png');
+            background-size: 75% 75%;
         }
 
         .northeastern-logo {
-            background: linear-gradient(45deg, #cc0000, #ff3333);
+            background: linear-gradient(135deg, #cc0000, #ff3333);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text x="50%" y="50%" text-anchor="middle" dy="0.3em" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="14">NU</text></svg>');
         }
 
         .amrita-logo {
-            background: linear-gradient(45deg, #ff8c00, #ffaa33);
+            background: linear-gradient(135deg, #ff8c00, #ffaa33);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text x="50%" y="50%" text-anchor="middle" dy="0.3em" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="12">A</text></svg>');
         }
 
         .experience-details {
@@ -1068,21 +1101,24 @@
                 </div>
             </div>
             <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">3+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">60%</span>
-                    <span class="stat-label">Performance Boost</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">$500K+</span>
-                    <span class="stat-label">Business Value</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">99%</span>
-                    <span class="stat-label">System Uptime</span>
+                <!-- Status Bar Style -->
+                <div class="status-bar" style="grid-column: span 2; margin-top: 30px;">
+                    <div class="status-item">
+                        <div class="status-dot active"></div>
+                        <span>Available for hire</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot active"></div>
+                        <span>Open to relocation</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot active"></div>
+                        <span>Remote friendly</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot active"></div>
+                        <span>Full-time preferred</span>
+                    </div>
                 </div>
 
                 <!-- Professional Analytics Dashboard -->
@@ -1096,8 +1132,8 @@
                         <div class="analytics-label">Unique Visitors</div>
                     </div>
                     <div class="analytics-stat">
-                        <div class="analytics-number" id="countries">0</div>
-                        <div class="analytics-label">Countries Reached</div>
+                        <div class="analytics-number" id="session-time">0</div>
+                        <div class="analytics-label">Minutes on Site</div>
                     </div>
                     <div class="analytics-stat">
                         <div class="analytics-number" id="projects-viewed">0</div>
@@ -1117,7 +1153,7 @@
         <div class="experience-timeline">
             <div class="experience-item">
                 <div class="experience-header">
-                    <div class="company-logo fidelity-logo">F</div>
+                    <div class="company-logo fidelity-logo"></div>
                     <div class="experience-details">
                         <h3 class="experience-title">Software Data Engineer Co-op</h3>
                         <p class="experience-company">Fidelity Investments</p>
@@ -1153,7 +1189,7 @@
 
             <div class="experience-item">
                 <div class="experience-header">
-                    <div class="company-logo oracle-logo">O</div>
+                    <div class="company-logo oracle-logo"></div>
                     <div class="experience-details">
                         <h3 class="experience-title">Software Engineer 1</h3>
                         <p class="experience-company">Oracle Health (Cerner Corporation)</p>
@@ -1188,7 +1224,7 @@
 
             <div class="experience-item">
                 <div class="experience-header">
-                    <div class="company-logo gigamon-logo">G</div>
+                    <div class="company-logo gigamon-logo"></div>
                     <div class="experience-details">
                         <h3 class="experience-title">Software Development Engineer in Test</h3>
                         <p class="experience-company">Gigamon</p>
@@ -1221,7 +1257,7 @@
 
             <div class="experience-item">
                 <div class="experience-header">
-                    <div class="company-logo accuknox-logo">A</div>
+                    <div class="company-logo accuknox-logo"></div>
                     <div class="experience-details">
                         <h3 class="experience-title">Software Engineering Trainee</h3>
                         <p class="experience-company">AccuKnox</p>
@@ -1623,7 +1659,7 @@
         let analyticsData = {
             totalViews: 0,
             uniqueVisitors: 0,
-            countries: 0,
+            sessionTime: 0,
             projectsViewed: 0,
             sessionStart: Date.now(),
             lastVisit: null,
@@ -1673,11 +1709,12 @@
             }
         }
 
+
         // Basic analytics fallback
         function basicAnalyticsTrack() {
             analyticsData.totalViews = 1;
             analyticsData.uniqueVisitors = 1;
-            analyticsData.countries = 1;
+            analyticsData.sessionTime = 0;
             updateCounterDisplay(1);
             updateStatsDisplay();
             saveLocalAnalytics();
@@ -1690,14 +1727,12 @@
 
             if (lastVisit !== today) {
                 analyticsData.uniqueVisitors++;
-                analyticsData.countries = Math.min(analyticsData.uniqueVisitors, analyticsData.totalViews);
                 localStorage.setItem('lastVisitDate', today);
                 analyticsData.lastVisit = today;
                 analyticsData.isFirstVisit = false;
             } else if (!lastVisit) {
                 // First ever visit
                 analyticsData.uniqueVisitors = 1;
-                analyticsData.countries = 1;
                 localStorage.setItem('lastVisitDate', today);
                 analyticsData.lastVisit = today;
             }
@@ -1773,7 +1808,7 @@
             } else if (currentViews <= 20) {
                 trendElement.innerHTML = `🚀 Gaining traction`;
             } else {
-                const weeklyGrowth = Math.floor(currentViews * 0.2); // Realistic growth estimate
+                const weeklyGrowth = Math.floor(currentViews * 0.2);
                 trendElement.innerHTML = `📈 +${weeklyGrowth} this week`;
             }
         }
@@ -1783,7 +1818,7 @@
             // Update main analytics dashboard
             document.getElementById('total-views').textContent = formatNumber(analyticsData.totalViews);
             document.getElementById('unique-visitors').textContent = formatNumber(analyticsData.uniqueVisitors);
-            document.getElementById('countries').textContent = analyticsData.countries;
+            document.getElementById('session-time').textContent = Math.floor((Date.now() - analyticsData.sessionStart) / 60000);
             document.getElementById('projects-viewed').textContent = analyticsData.projectsViewed;
         }
 
@@ -1818,6 +1853,11 @@
 
         // Track session data
         function trackSession() {
+            // Update session time every minute
+            setInterval(() => {
+                updateStatsDisplay();
+            }, 60000);
+
             // Track page visibility changes
             document.addEventListener('visibilitychange', function () {
                 if (document.hidden) {
@@ -1830,7 +1870,6 @@
             window.addEventListener('beforeunload', function () {
                 const sessionDuration = Date.now() - analyticsData.sessionStart;
                 console.log(`Session duration: ${Math.floor(sessionDuration / 1000)} seconds`);
-                console.log(`Total views this session: ${analyticsData.totalViews}`);
                 saveLocalAnalytics();
             });
 
@@ -1842,7 +1881,6 @@
                 const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
                 maxScroll = Math.max(maxScroll, scrollPercent);
 
-                // Track meaningful scroll (past hero section)
                 if (scrollPercent > 50 && !scrollTracked) {
                     console.log('User engaged - scrolled past 50%');
                     scrollTracked = true;
@@ -1856,7 +1894,6 @@
                 const stored = localStorage.getItem(ANALYTICS_CONFIG.localStorageKey);
                 if (stored) {
                     const parsedData = JSON.parse(stored);
-                    // Merge with defaults to ensure all properties exist
                     analyticsData = { ...analyticsData, ...parsedData };
                     console.log('Analytics loaded from storage:', analyticsData);
                 }
@@ -1873,14 +1910,14 @@
             }
         }
 
-        // Utility function to reset analytics (for testing)
+        // Utility function to reset analytics
         function resetAnalytics() {
             localStorage.removeItem(ANALYTICS_CONFIG.localStorageKey);
             localStorage.removeItem('lastVisitDate');
             analyticsData = {
                 totalViews: 0,
                 uniqueVisitors: 0,
-                countries: 0,
+                sessionTime: 0,
                 projectsViewed: 0,
                 sessionStart: Date.now(),
                 lastVisit: null,
@@ -1936,13 +1973,12 @@
             initializeAnalytics();
         });
 
-        // Debug function for development (remove in production)
+        // Debug functions
         window.debugAnalytics = function () {
             console.log('Current Analytics Data:', analyticsData);
             console.log('Local Storage:', localStorage.getItem(ANALYTICS_CONFIG.localStorageKey));
         };
 
-        // Make reset function available globally for testing
         window.resetAnalytics = resetAnalytics;
     </script>
 </body>
